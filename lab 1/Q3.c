@@ -1,3 +1,26 @@
+/*
+Write a program to perform the following operations on a given square matrix using functions:
+i.   Find the no.of nonzero elements
+ii.  Display upper triangular matrix
+iii. Display the elements of just above and below the main diagonal
+
+Sample Input:
+Enter size of the square matrix: 4
+Enter elements of the matrix:
+8   2   1   0
+1   0   7   6
+0   6   2   4
+3   9   5   0
+
+Sample Output:
+
+Nonzero elements : 12
+Upper triangular matrix:
+2  1  0
+    7  6
+        4
+*/
+
 #include <stdio.h>
 
 void inputMatrix(int matrix[][10], int size)

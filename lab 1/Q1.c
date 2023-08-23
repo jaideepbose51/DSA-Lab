@@ -1,4 +1,26 @@
+/*
+Write a menu driven program to create a structure to represent complex number and perform the following operation using function :
+
+1. addition of two complex number  (call by value)
+
+
+Sample Input/Output:
+
+Enter complex number 1: 3  4
+Enter complex number 2: 4  5
+
+MENU
+1. addition
+2. exit
+Enter your choice: 1
+
+Sum=7+9i
+Enter your choice: 2
+
+*/
+
 #include <stdio.h>
+#include <stdlib.h>
 
 struct complex
 {
