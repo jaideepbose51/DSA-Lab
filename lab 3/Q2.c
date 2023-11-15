@@ -1,45 +1,66 @@
 #include <stdio.h>
 
-struct SparseMatrixEntry
-{
-    int row, col, value;
-};
-
-void transposeSparseMatrix(struct SparseMatrixEntry matrix[], int numEntries)
-{
-    struct SparseMatrixEntry transposedMatrix[numEntries];
-
-    for (int i = 0; i < numEntries; i++)
-    {
-        transposedMatrix[i].row = matrix[i].col;
-        transposedMatrix[i].col = matrix[i].row;
-        transposedMatrix[i].value = matrix[i].value;
-    }
-
-    printf("\nTranspose of sparse matrix:\n");
-    printf("R   C  Element\n");
-
-    for (int i = 0; i < numEntries; i++)
-    {
-        printf("%d   %d   %d\n", transposedMatrix[i].row, transposedMatrix[i].col, transposedMatrix[i].value);
-    }
-}
-
 int main()
 {
-    printf("Enter sparse matrix in 3-tuple format\n");
+    int triplet[50][3], columnmajor[50][3];
+    int row, col, nzero, temp = 1, i, j;
 
-    int numEntries;
-    scanf("%d", &numEntries);
+    printf("Enter total non-zero values of sparse matrix: ");
+    scanf("%d", &nzero);
 
-    struct SparseMatrixEntry sparseMatrix[numEntries];
-    for (int i = 0; i < numEntries; i++)
+    // Input for triplet matrix
+    printf("Enter values (row column value):\n");
+    for (i = 0; i < nzero; i++)
     {
-        scanf("%d %d %d", &sparseMatrix[i].row, &sparseMatrix[i].col, &sparseMatrix[i].value);
+        for (j = 0; j < 3; j++)
+        {
+            scanf("%d", &triplet[i][j]);
+        }
     }
 
-    printf("\nSample Output:\n");
-    transposeSparseMatrix(sparseMatrix, numEntries);
+    // Display triplet matrix
+    printf("\nValues of triplet matrix are\n");
+    for (i = 0; i < nzero; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("%d\t", triplet[i][j]);
+        }
+        printf("\n");
+    }
+
+    row = triplet[0][0];
+    col = triplet[0][1];
+
+    // Transpose processing
+    columnmajor[0][0] = col;
+    columnmajor[0][1] = row;
+    columnmajor[0][2] = nzero;
+
+    for (j = 0; j < col; j++)
+    {
+        for (i = 0; i < nzero; i++)
+        {
+            if (triplet[i][1] == j)
+            {
+                columnmajor[temp][0] = j;
+                columnmajor[temp][1] = triplet[i][0];
+                columnmajor[temp][2] = triplet[i][2];
+                temp++;
+            }
+        }
+    }
+
+    // Display the transpose matrix
+    printf("\nValues of transpose matrix are\n");
+    for (i = 0; i < nzero + 1; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("%d\t", columnmajor[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }

@@ -30,6 +30,8 @@ int main()
             sum += *(p + i);
     }
     printf("Sum of prime element is :%d", sum);
+    free(p);
+    return 0;
 }
 
 int prime(int *p)

@@ -32,7 +32,7 @@ double add(double, double);
 
 int main()
 {
-    double real, img; // Use double instead of int for real and img
+    double real, img; 
     int ch;
     struct complex obj1;
     struct complex obj2;

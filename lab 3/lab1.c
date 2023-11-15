@@ -1,3 +1,6 @@
+// WAP to store the data of a sparse matrix in three tuple format
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
